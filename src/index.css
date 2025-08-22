@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+:root {
+  --mainFont: 'Poppins', sans-serif;
+}
+
+::selection {
+  color: black;
+  background: lightblue;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+
+  width: 100%;
+  height: 100vh;
+  overflow-x: hidden;
+}
+
+.secondary {
+  color: #8e8e8e;
+}
+
+.h6 {
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: #707070;
+}
+
+.h5 {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #707070;
+}

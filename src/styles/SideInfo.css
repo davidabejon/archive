@@ -1,0 +1,30 @@
+.side-film-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: small;
+    background-color: white;
+    padding: 1rem;
+    border-radius: .6rem;
+    max-width: 200px;
+    height: fit-content;
+}
+
+@media (max-width: 600px) {
+    .side-film-info {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 2rem;
+        overflow-x: scroll;
+        width: 100%;
+    }
+}
+
+.side-film-info p {
+    color: #7d7d7d;
+}
+
+.info-item {
+    width: fit-content;
+}

@@ -1,0 +1,78 @@
+import Card from '../Card'
+import { relationTypes, statuses } from '../../constants'
+import { capitalize } from '../../helper'
+
+function Overview({ relations, characters, staff }) {
+
+  const relationsOrdered = relations?.sort((a, b) => {
+    const startDateA = new Date(a.startDate.year, a.startDate.month - 1, a.startDate.day)
+    const startDateB = new Date(b.startDate.year, b.startDate.month - 1, b.startDate.day)
+    return startDateA - startDateB
+  })
+
+  return (
+    <div>
+      {relations && (
+        <>
+          <h6 className="h5 mb-2">Relations</h6>
+          <div className="flex gap-4 flex-wrap">
+            {
+              relationsOrdered.map((relation) => (
+                <Card
+                  key={relation.id}
+                  imageSrc={relation.coverImage.medium}
+                  title={relation.title.english || relation.title.romaji}
+                  subtitle={`${capitalize(relation.type)} · ${statuses[relation.status] || relation.status}`}
+                  link={`/${relation.type.toLowerCase()}/${relation.id}`}
+                  tag={relationTypes[relation.relationType] || capitalize(relation.relationType)}
+                  type={relationsOrdered.length > 4 ? 'small' : 'default'}
+                />
+              ))
+            }
+          </div>
+        </>
+      )}
+      {characters && (
+        <>
+          <h6 className="h5 mb-2 mt-8">Characters</h6>
+          <div className="flex gap-4 flex-wrap">
+            {
+              characters.map((character) => (
+                <Card
+                  key={character.id}
+                  imageSrc={character.image.medium}
+                  secondImageSrc={character.voiceActors[0]?.image?.medium}
+                  title={character.name.full || character.name.native}
+                  secondTitle={character.voiceActors[0]?.name?.full || character.voiceActors[0]?.name?.native}
+                  subtitle={capitalize(character.role)}
+                  secondSubtitle={capitalize(character.voiceActors[0]?.languageV2)}
+                  type={'double'}
+                />
+              ))
+            }
+          </div>
+        </>
+      )}
+      {staff && (
+        <>
+          <h6 className="h5 mb-2 mt-8">Staff</h6>
+          <div className="flex gap-4 flex-wrap">
+            {
+              staff.map((member) => (
+                <Card
+                  key={member.id}
+                  imageSrc={member.image.medium}
+                  title={member.name.full || member.name.native}
+                  subtitle={capitalize(member.role)}
+                  type={'default-sm'}
+                />
+              ))
+            }
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
+
+export default Overview;

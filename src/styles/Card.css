@@ -1,0 +1,144 @@
+/* default */
+
+.card {
+    display: flex;
+    gap: 1rem;
+    background-color: white;
+    padding-right: 1rem;
+    width: 300px;
+}
+
+.card-sm {
+    height: 80px;
+}
+
+.card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0.5rem 0;
+}
+
+.card-title {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    line-height: 1rem;
+}
+
+.card-image {
+    width: 85px;
+    height: 120px;
+}
+
+.card-image-sm {
+    width: 60px;
+    height: 80px;
+    background-size: cover;
+    background-position: center;
+}
+
+/* small */
+
+.image-link {
+    width: 85px;
+    height: 120px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 0.1rem;
+}
+
+.image-link-description {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: rgba(255, 255, 255, 0.85);
+    padding: 0.2rem 0;
+    font-size: 0.8rem;
+    transition: opacity 0.3s ease;
+}
+
+.image-link-container {
+    position: relative;
+    display: inline-block;
+}
+
+.info-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 120px;
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    width: 210px;
+    background: white;
+    padding: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
+}
+
+.image-link-container:hover .info-card {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.image-link-container:hover .info-card {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+}
+
+.image-link-container:hover .image-link-description {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.image-link-container .info-card:hover {
+    opacity: 0;
+    transform: translateX(10px);
+    pointer-events: none;
+}
+
+/* double */
+.card-double {
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+    background-color: white;
+    width: 400px;
+    font-size: 0.8rem;
+    line-height: 1.3;
+}
+
+.card-double .card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0.5rem 0;
+}
+
+.card-double .card-title {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    line-height: 1rem;
+}
+
+.card-double .card-image {
+    width: 85px;
+}
+
+.card-double-image {
+    height: 80px;
+}
+
+.card-double-container {
+    display: flex;
+    gap: 0.5rem;
+}
