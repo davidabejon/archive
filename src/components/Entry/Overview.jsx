@@ -72,7 +72,7 @@ function Overview({ relations, characters, staff }) {
         </>
       )}
     </div>
-  );
+  )
 }
 
-export default Overview;
+export default Overview

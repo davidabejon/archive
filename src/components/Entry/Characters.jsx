@@ -1,22 +1,22 @@
-import { useEffect, useState } from "react";
-import { capitalize } from "../../helper";
-import Card from "../Card";
-import { getCharactersPage } from "../../api/queries";
-import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react"
+import { capitalize } from "../../helper"
+import Card from "../Card"
+import { getCharactersPage } from "../../api/queries"
+import { useParams } from "react-router-dom"
 
 function Characters() {
 
   const { id } = useParams()
   const { type } = useParams()
 
-  const [characters, setCharacters] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [characters, setCharacters] = useState([])
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     const fetchAllCharacters = async () => {
-      let allChars = [];
-      let page = 1;
-      let hasNextPage = true;
+      let allChars = []
+      let page = 1
+      let hasNextPage = true
 
       while (hasNextPage) {
         const response = await fetch("https://graphql.anilist.co", {
@@ -29,10 +29,10 @@ function Characters() {
             query: getCharactersPage,
             variables: { id: id, type: type.toUpperCase(), page, perPage: 25 },
           }),
-        });
+        })
 
-        const data = await response.json();
-        const charData = data.data.Media.characters;
+        const data = await response.json()
+        const charData = data.data.Media.characters
 
         allChars = [
           ...allChars,
@@ -41,19 +41,19 @@ function Characters() {
             role: edge.role,
             voiceActors: edge.voiceActors,
           })),
-        ];
+        ]
 
-        hasNextPage = charData.pageInfo.hasNextPage;
-        page++;
+        hasNextPage = charData.pageInfo.hasNextPage
+        page++
       }
 
-      setLoading(false);
-      setCharacters(allChars);
-    };
+      setLoading(false)
+      setCharacters(allChars)
+    }
 
-    setLoading(true);
-    fetchAllCharacters();
-  }, [id, type]);
+    setLoading(true)
+    fetchAllCharacters()
+  }, [id, type])
 
   return (
     <>
@@ -74,7 +74,7 @@ function Characters() {
         </div>
       )}
     </>
-  );
+  )
 }
 
-      export default Characters;
+      export default Characters

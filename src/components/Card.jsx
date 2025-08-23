@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
-import '../styles/Card.css';
+import { Link } from 'react-router-dom'
+import '../styles/Card.css'
 
 function Card({ imageSrc, title, subtitle, link, tag, type, secondImageSrc, secondTitle, secondSubtitle, secondLink }) {
   return (
@@ -60,7 +60,7 @@ function Card({ imageSrc, title, subtitle, link, tag, type, secondImageSrc, seco
             <p className="card-subtitle secondary text-xs">{subtitle}</p>
           </div>
         </div>
-  );
+  )
 }
 
-export default Card;
+export default Card

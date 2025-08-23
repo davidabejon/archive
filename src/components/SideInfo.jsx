@@ -1,5 +1,5 @@
-import '../styles/SideInfo.css';
-import Info from './Info';
+import '../styles/SideInfo.css'
+import Info from './Info'
 
 function SideInfo({ format, episodes, duration, startDate, genres, score, popularity, studios, producers, alternativeTitles }) {
   return (
@@ -16,7 +16,7 @@ function SideInfo({ format, episodes, duration, startDate, genres, score, popula
       <Info tag="Alternative titles" value={alternativeTitles} />
 
     </div>
-  );
+  )
 }
 
-export default SideInfo;
+export default SideInfo

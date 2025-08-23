@@ -114,7 +114,7 @@ query ($id: Int, $type: MediaType) { # Define which variables will be used in th
     }
   }
 }
-`;
+`
 
 export const getCharactersPage = `
 query ($id: Int, $type: MediaType, $page: Int, $perPage: Int) {
@@ -154,4 +154,4 @@ query ($id: Int, $type: MediaType, $page: Int, $perPage: Int) {
     }
   }
 }
-`;
+`

@@ -1,6 +1,6 @@
-import { Tabs } from "antd";
-import Overview from "./Overview";
-import Characters from "./Characters";
+import { Tabs } from "antd"
+import Overview from "./Overview"
+import Characters from "./Characters"
 
 function EntryTabs({ relations, characters, staff }) {
   return (
@@ -33,7 +33,7 @@ function EntryTabs({ relations, characters, staff }) {
         }
       ]} />
     </div>
-  );
+  )
 }
 
-export default EntryTabs;
+export default EntryTabs

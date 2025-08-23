@@ -8,7 +8,7 @@ function Info({ tag, value }) {
         <p>{value}</p>
       )}
     </div>
-  );
+  )
 }
 
-export default Info;
+export default Info

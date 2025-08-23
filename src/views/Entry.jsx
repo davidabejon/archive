@@ -47,19 +47,19 @@ function Entry() {
         query: getAnimeByID,
         variables: variables
       })
-    };
+    }
 
   useEffect(() => {
-    setLoading(true);
+    setLoading(true)
     fetch(url, options).then(handleResponse)
       .then(handleData)
       .catch(handleError)
-  }, [id]);
+  }, [id])
 
   function handleResponse(response) {
     return response.json().then(function (json) {
       return response.ok ? json : Promise.reject(json)
-    });
+    })
   }
 
   function handleData(data) {
@@ -67,7 +67,7 @@ function Entry() {
     setFilm(data.data.Media)
     console.log(data.data.Media)
     document.title = `${data.data.Media.title.english || data.data.Media.title.romaji || data.data.Media.title.native} · Archive` || 'Archive'
-    window.history.replaceState({}, '', `/${type}/${id}/${data.data.Media.title.english ? data.data.Media.title.english.replace(/ /g, '-') : data.data.Media.title.romaji ? data.data.Media.title.romaji.replace(/ /g, '-') : data.data.Media.title.native.replace(/ /g, '-')}`);
+    window.history.replaceState({}, '', `/${type}/${id}/${data.data.Media.title.english ? data.data.Media.title.english.replace(/ /g, '-') : data.data.Media.title.romaji ? data.data.Media.title.romaji.replace(/ /g, '-') : data.data.Media.title.native.replace(/ /g, '-')}`)
   }
 
   function handleError(error) {
@@ -158,7 +158,7 @@ function Entry() {
           </div>
         </>}
     </>
-  );
+  )
 }
 
-export default Entry;
+export default Entry
