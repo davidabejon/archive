@@ -1,8 +1,8 @@
 import Card from '../Card'
-import { relationTypes, statuses } from '../../constants'
+import { DAILYMOTION_URL, relationTypes, statuses, YT_URL } from '../../constants'
 import { capitalize } from '../../helper'
 
-function Overview({ relations, characters, staff }) {
+function Overview({ relations, characters, staff, trailer }) {
 
   const relationsOrdered = relations?.sort((a, b) => {
     const startDateA = new Date(a.startDate.year, a.startDate.month - 1, a.startDate.day)
@@ -69,6 +69,18 @@ function Overview({ relations, characters, staff }) {
               ))
             }
           </div>
+        </>
+      )}
+      {trailer && (
+        <>
+          <h6 className="h5 mb-2 mt-8">Trailer</h6>
+          {/* embed a youtube video */}
+          <iframe
+            width="560"
+            height="315"
+            src={`${trailer.site === 'youtube' ? YT_URL : DAILYMOTION_URL}${trailer.id}`}
+            allowFullScreen
+          ></iframe>
         </>
       )}
     </div>

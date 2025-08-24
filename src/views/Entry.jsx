@@ -152,6 +152,7 @@ function Entry() {
                   image: member.node.image,
                   role: member.role
                 }))}
+                trailer={film?.trailer}
               />
             </div>
 

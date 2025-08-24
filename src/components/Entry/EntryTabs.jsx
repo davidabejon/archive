@@ -2,7 +2,7 @@ import { Tabs } from "antd"
 import Overview from "./Overview"
 import Characters from "./Characters"
 
-function EntryTabs({ relations, characters, staff }) {
+function EntryTabs({ relations, characters, staff, trailer }) {
   return (
     <div className="w-full">
       <Tabs defaultActiveKey="1" items={[
@@ -14,6 +14,7 @@ function EntryTabs({ relations, characters, staff }) {
               relations={relations}
               characters={characters?.filter((_, index) => index < 6)}
               staff={staff?.filter((_, index) => index < 3)}
+              trailer={trailer}
             />,
         },
         {
