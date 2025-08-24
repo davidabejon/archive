@@ -18,11 +18,15 @@
 
 @media (max-width: 600px) {
     .side-film-info {
-        flex-direction: row;
         justify-content: space-between;
-        align-items: center;
-        gap: 2rem;
+        align-items: left;
+        gap: 0.5rem;
         overflow-x: scroll;
+        width: 100%;
+        max-width: 90vw;
+        max-height: 150px;
+    }
+    .side-film-info-container {
         width: 100%;
     }
 }

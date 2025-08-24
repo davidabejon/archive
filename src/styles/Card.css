@@ -12,6 +12,12 @@
     height: 80px;
 }
 
+@media (max-width: 600px) {
+    .card {
+        width: 100%;
+    }
+}
+
 .card-content {
     display: flex;
     flex-direction: column;

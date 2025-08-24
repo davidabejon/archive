@@ -1,6 +1,7 @@
 import Card from '../Card'
 import { DAILYMOTION_URL, relationTypes, statuses, YT_URL } from '../../constants'
 import { capitalize } from '../../helper'
+import '../../styles/Overview.css'
 
 function Overview({ relations, characters, staff, trailer }) {
 
@@ -76,8 +77,7 @@ function Overview({ relations, characters, staff, trailer }) {
           <h6 className="h5 mb-2 mt-8">Trailer</h6>
           {/* embed a youtube video */}
           <iframe
-            width="560"
-            height="315"
+            className='trailer'
             src={`${trailer.site === 'youtube' ? YT_URL : DAILYMOTION_URL}${trailer.id}`}
             allowFullScreen
           ></iframe>

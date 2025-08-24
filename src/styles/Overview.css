@@ -1,0 +1,11 @@
+.trailer {
+    aspect-ratio: 16 / 9;
+    width: 100%;
+    border: none;
+}
+
+@media (min-width: 1260px) {
+    .trailer {
+        width: 50%;
+    }
+}
