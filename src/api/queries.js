@@ -160,3 +160,31 @@ query ($id: Int, $type: MediaType, $page: Int, $perPage: Int) {
   }
 }
 `
+
+export const getStaffPage = `
+query ($id: Int, $type: MediaType, $page: Int, $perPage: Int) {
+  Media(id: $id, type: $type) {
+    id
+    staff(sort: RELEVANCE, page: $page, perPage: $perPage) {
+      pageInfo {
+        currentPage
+        hasNextPage
+      }
+      edges {
+        role
+        node {
+          id
+          name {
+            full
+            native
+          }
+          image {
+            large
+            medium
+          }
+        }
+      }
+    }
+  }
+}
+`

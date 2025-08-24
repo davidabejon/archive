@@ -1,6 +1,7 @@
 import { Tabs } from "antd"
 import Overview from "./Overview"
 import Characters from "./Characters"
+import Staff from "./Staff"
 
 function EntryTabs({ relations, characters, staff, trailer }) {
   return (
@@ -20,12 +21,12 @@ function EntryTabs({ relations, characters, staff, trailer }) {
         {
           key: '2',
           label: 'Characters',
-          children: <Characters characters={characters} />,
+          children: <Characters />,
         },
         {
           key: '3',
           label: 'Staff',
-          children: 'Content of Tab Pane 2',
+          children: <Staff />,
         },
         {
           key: '4',
