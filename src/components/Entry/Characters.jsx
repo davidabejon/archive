@@ -16,6 +16,7 @@ function Characters() {
   const [hasNextPage, setHasNextPage] = useState(true)
   const [page, setPage] = useState(1)
   const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
 
   useEffect(() => {
     const fetchCharacters = async () => {
@@ -34,6 +35,11 @@ function Characters() {
       })
 
       const data = await response.json()
+      if (!response.ok) {
+        setError(data.errors[0].message)
+        setLoading(false)
+        return
+      }
       const charData = data.data.Media.characters
 
       allChars = [
