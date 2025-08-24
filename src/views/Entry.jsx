@@ -1,11 +1,11 @@
 import '../styles/Entry.css'
 import { useEffect, useState } from 'react'
 import { getAnimeByID } from '../api/queries'
-import SideInfo from '../components/SideInfo'
+import SideInfo from '../components/Entry/SideInfo'
 import EntryTabs from '../components/Entry/EntryTabs'
 import { capitalize } from '../helper'
 import { useNavigate, useParams } from 'react-router-dom'
-import { formats } from '../constants'
+import { formats, statuses } from '../constants'
 import Loading from '../components/Loading'
 import { Modal } from 'antd'
 
@@ -120,14 +120,21 @@ function Entry() {
               <SideInfo
                 format={formats[film?.format] || capitalize(film?.format)}
                 episodes={film?.episodes}
+                chapters={film?.chapters}
                 duration={film?.duration}
-                startDate={film ? new Date(film?.startDate.year, film?.startDate.month - 1, film?.startDate.day).toISOString().split('T')[0] : ''}
+                volumes={film?.volumes}
+                startDate={film?.startDate}
+                endDate={film?.endDate}
                 genres={film?.genres}
                 score={film?.meanScore}
                 popularity={film?.popularity}
                 studios={film?.studios.edges.filter(studio => studio.isMain).map(studio => studio.node.name)}
                 producers={film?.studios.edges.filter(producer => !producer.isMain).map(producer => producer.node.name)}
-                alternativeTitles={[film?.title.romaji, film?.title.native, ...film ? film?.synonyms : []]}
+                romaji={film?.title.romaji}
+                english={film?.title.english}
+                native={film?.title.native}
+                alternativeTitles={film?.synonyms}
+                status={statuses[film?.status] || capitalize(film?.status)}
               />
               <EntryTabs
                 relations={film?.relations.edges.map(relation => ({

@@ -5,6 +5,7 @@ query ($id: Int, $type: MediaType) { # Define which variables will be used in th
     description
     format
     type
+    status
     startDate {
       year
       month
