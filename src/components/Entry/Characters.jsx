@@ -5,6 +5,7 @@ import { getCharactersPage } from "../../api/queries"
 import { useParams } from "react-router-dom"
 import '../../styles/Characters.css'
 import { Button } from "antd"
+import Spinner from "../Spinner"
 
 function Characters() {
 
@@ -56,6 +57,9 @@ function Characters() {
 
   return (
     <>
+      {loading && characters.length === 0 && (
+        <Spinner />
+      )}
       <div className="flex flex-wrap gap-4">
         {characters.map(character => (
           <Card
@@ -70,7 +74,7 @@ function Characters() {
           />
         ))}
       </div>
-      {hasNextPage && (
+      {hasNextPage && characters.length > 0 && (
         <Button type="primary" className="mt-5" loading={loading} onClick={() => setPage(prevPage => prevPage + 1)} disabled={!hasNextPage}>
           Load More
         </Button>
