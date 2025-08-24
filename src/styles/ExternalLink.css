@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+.external-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: inherit;
+    background-color: white;
+    padding: 0.3rem 0.3rem;
+    border-radius: 0.3rem;
+    transition: background-color 0.3s ease;
+}
+
+.external-link:hover {
+    background-color: var(--hoverColor);
+}
+
+.external-link:hover .external-link-text {
+    color: white;
+}
+
+.external-link-icon {
+    width: 1.3rem;
+    height: 1.3rem;
+    padding: 0.2rem;
+    border-radius: 3px;
+}
+
+.external-link-text {
+    font-weight: bold;
+    font-size: 0.8rem;
+    color: rgb(147, 147, 147);
+    transition: color 0.3s ease;
+}

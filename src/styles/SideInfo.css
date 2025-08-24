@@ -1,3 +1,9 @@
+.side-film-info-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
 .side-film-info {
     display: flex;
     flex-direction: column;

@@ -135,6 +135,7 @@ function Entry() {
                 native={film?.title.native}
                 alternativeTitles={film?.synonyms}
                 status={statuses[film?.status] || capitalize(film?.status)}
+                externalLinks={film?.externalLinks}
               />
               <EntryTabs
                 relations={film?.relations.edges.map(relation => ({

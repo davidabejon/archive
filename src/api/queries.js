@@ -118,6 +118,12 @@ query ($id: Int, $type: MediaType) { # Define which variables will be used in th
       site
       thumbnail
     }
+    externalLinks {
+      site
+      url
+      color
+      icon
+    }
   }
 }
 `
