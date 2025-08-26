@@ -2,7 +2,7 @@ export const getAnimeByID = `
 query ($id: Int, $type: MediaType) {
   Media (id: $id, type: $type) {
     id
-    description
+    description (asHtml: true)
     format
     type
     status
@@ -142,7 +142,7 @@ query ($id: Int) {
       large
       medium
     }
-    description
+    description (asHtml: true)
     age
     gender
     dateOfBirth {
