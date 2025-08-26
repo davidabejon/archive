@@ -8,23 +8,13 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { formats, statuses } from '../constants'
 import Loading from '../components/Loading'
 import { Modal } from 'antd'
+import ReadMoreText from '../components/ReadMoreText'
 
 const MAX_DESCRIPTION_LENGTH = 600
 
 function Entry() {
 
   let navigate = useNavigate()
-
-  const [isModalOpen, setIsModalOpen] = useState(false)
-  const showModal = () => {
-    setIsModalOpen(true)
-  }
-  const handleOk = () => {
-    setIsModalOpen(false)
-  }
-  const handleCancel = () => {
-    setIsModalOpen(false)
-  }
 
   const { id } = useParams()
   const { type } = useParams()
@@ -87,32 +77,7 @@ function Entry() {
               <img className='entry-poster' src={film?.coverImage.large} alt={film?.title.english} />
               <div className='entry-info'>
                 <h1 className='text-lg'>{film?.title.english || film?.title.romaji || film?.title.native}</h1>
-                {
-                  film?.description.length > MAX_DESCRIPTION_LENGTH ?
-                    <>
-                      <p className='secondary text-sm mt-3 w-full' dangerouslySetInnerHTML={{ __html: new DOMParser().parseFromString(film?.description.slice(0, MAX_DESCRIPTION_LENGTH) + '...', 'text/html').body.innerHTML }} />
-                      <button className='text-blue-300 font-bold text-sm mt-2 read-more-btn' onClick={showModal}>Read more</button>
-                      <Modal
-                        title="Description"
-                        closable={{ 'aria-label': 'Custom Close Button' }}
-                        open={isModalOpen}
-                        onCancel={handleCancel}
-                        footer={null}
-                        width={{
-                          xs: '90%',
-                          sm: '80%',
-                          md: '70%',
-                          lg: '60%',
-                          xl: '50%',
-                          xxl: '40%',
-                        }}
-                      >
-                        <div dangerouslySetInnerHTML={{ __html: new DOMParser().parseFromString(film?.description, 'text/html').body.innerHTML }} />
-                      </Modal>
-                    </>
-                    :
-                    <p className='secondary text-sm mt-3 w-full' dangerouslySetInnerHTML={{ __html: new DOMParser().parseFromString(film?.description, 'text/html').body.innerHTML }} />
-                }
+                <ReadMoreText className='secondary' text={film?.description} maxLength={MAX_DESCRIPTION_LENGTH} />
               </div>
             </div>
 

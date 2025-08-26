@@ -1,6 +1,6 @@
-export var getAnimeByID = `
-query ($id: Int, $type: MediaType) { # Define which variables will be used in the query (id)
-  Media (id: $id, type: $type) { # Insert our variables into the query arguments (id) (type: ANIME is hard-coded in the query)
+export const getAnimeByID = `
+query ($id: Int, $type: MediaType) {
+  Media (id: $id, type: $type) {
     id
     description
     format
@@ -123,6 +123,51 @@ query ($id: Int, $type: MediaType) { # Define which variables will be used in th
       url
       color
       icon
+    }
+  }
+}
+`
+
+export const getCharacterByID = `
+query ($id: Int) {
+  Character (id: $id) {
+    id
+    name {
+      full
+      native
+      alternative
+      alternativeSpoiler
+    }
+    image {
+      large
+      medium
+    }
+    description
+    age
+    gender
+    dateOfBirth {
+      year
+      month
+      day
+    }
+    media {
+      edges {
+        node {
+          id
+          title {
+            romaji
+            english
+            native
+          }
+          coverImage {
+            extraLarge
+            large
+            medium
+          }
+          type
+          status
+        }
+      }
     }
   }
 }

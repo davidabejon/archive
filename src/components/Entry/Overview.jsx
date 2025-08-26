@@ -47,6 +47,8 @@ function Overview({ relations, characters, staff, trailer }) {
                   secondTitle={character.voiceActors[0]?.name?.full || character.voiceActors[0]?.name?.native}
                   subtitle={capitalize(character.role)}
                   secondSubtitle={capitalize(character.voiceActors[0]?.languageV2)}
+                  link={`/character/${character.id}`}
+                  secondLink={`/staff/${character.voiceActors[0]?.id}`}
                   type={'double'}
                 />
               ))

@@ -1,0 +1,77 @@
+.character {
+    margin-top: 10vh;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+    display: flex;
+    gap: 3rem;
+    justify-content: center;
+    background-color: white;
+}
+
+.character-info {
+    width: 40vw;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+@media (max-width: 900px) {
+    .character {
+        flex-direction: column;
+        align-items: center;
+        margin-top: 5vh;
+        gap: 1rem;
+    }
+
+    .character-info {
+        width: 90vw;
+        gap: 1rem;
+    }
+}
+
+.character img {
+    max-height: fit-content;
+    border-radius: 0.2rem;
+}
+
+.character-details {
+    position: relative;
+}
+
+.character-details:hover .read-more-btn {
+    opacity: 1;
+}
+
+.character-media {
+    margin-top: 2rem;
+    display: grid;
+    grid-gap: 28px 30px;
+    grid-template-columns: repeat(auto-fill, 185px);
+    justify-content: space-between;
+    padding: 0 10vw;
+    grid-template-rows: min-content auto;
+}
+
+.character-media a img {
+    height: 270px;
+    width: fit-content;
+    object-fit: cover;
+}
+
+@media (max-width: 600px) {
+    .character-media {
+        padding: 0;
+        grid-gap: 25px 20px;
+        grid-template-columns: repeat(auto-fill, 150px);
+        padding: 0 1rem;
+    }
+
+    .character-media a img {
+        width: 45vw;
+    }
+}
+@media (max-width: 400px) {
+    .character-media {
+        justify-content: center;
+    }
+}
