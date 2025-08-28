@@ -7,20 +7,18 @@ import Staff from './views/Staff'
 function App() {
 
   window.addEventListener('click', event => {
-    const spoilers = document.querySelectorAll('.markdown_spoiler');
-    // if click on active spoiler, hide it
+    const spoilers = document.querySelectorAll('.markdown_spoiler')
     spoilers.forEach(spoiler => {
-      // if click was made on this spoiler
       if (spoiler.contains(event.target)) {
-        console.log(spoiler.classList);
+        console.log(spoiler.classList)
         if (spoiler.classList.contains('spoiler-active')) {
-          spoiler.classList.remove('spoiler-active');
+          spoiler.classList.remove('spoiler-active')
         } else {
-          spoiler.classList.add('spoiler-active');
+          spoiler.classList.add('spoiler-active')
         }
       }
-    });
-  });
+    })
+  })
 
   return (
     <Router>
@@ -28,6 +26,7 @@ function App() {
         <Route path={'/'} element={'/'} />
         <Route path={'/:type/:id/:title?'} element={<Entry />} />
         <Route path={'/character/:id/:name?'} element={<Character />} />
+        <Route path={'/staff/:id/:name?'} element={<Staff />} />
         <Route path={'*'} element={'not found'} />
       </Routes>
     </Router>

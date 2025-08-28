@@ -16,7 +16,7 @@ function ReadMoreText({ text, maxLength = 300, className = "" }) {
       {
         text?.length > maxLength ?
           <>
-            <p className={`text-sm mt-3 w-full ${className}`} dangerouslySetInnerHTML={{ __html: new DOMParser().parseFromString(text.slice(0, maxLength) + '...', 'text/html').body.innerHTML }} />
+            <p className={`text-sm w-full ${className}`} dangerouslySetInnerHTML={{ __html: new DOMParser().parseFromString(text.slice(0, maxLength) + '...', 'text/html').body.innerHTML }} />
             <button className='text-blue-300 font-bold text-sm mt-2 read-more-btn' onClick={showModal}>Read more</button>
             <Modal
               title="Description"

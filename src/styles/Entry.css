@@ -100,6 +100,8 @@
     padding-top: 2rem;
     background: linear-gradient(to top, rgba(255, 255, 255, 0.8), transparent);
     transition: opacity 0.3s ease;
+    text-shadow: 2px 0 #444, -2px 0 #444, 0 2px #444, 0 -2px #444,
+               1px 1px #444, -1px -1px #444, 1px -1px #444, -1px 1px #444;
 }
 
 .entry-info:hover .read-more-btn {

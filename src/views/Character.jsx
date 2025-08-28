@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom"
+import { Link, useNavigate, useParams } from "react-router-dom"
 import { getCharacterByID } from "../api/queries"
 import { useEffect, useState } from "react"
 import Loading from "../components/Loading"
@@ -9,6 +9,7 @@ import Card from "../components/Card"
 
 function Character() {
 
+  let navigate = useNavigate()
   const { id } = useParams()
 
   const [character, setCharacter] = useState(null)
@@ -71,8 +72,8 @@ function Character() {
                 <p className="secondary">{[character?.name.native, ...character?.name.alternative]?.join(", ")}</p>
               </div>
               <div className="character-details">
-                {Object.values(!character?.dateOfBirth).some(value => value === null || value === undefined) && (
-                  <p className="text-sm"><strong>Birthday:</strong> {new Date(character?.dateOfBirth.year, character?.dateOfBirth.month - 1, character?.dateOfBirth.day).toLocaleDateString()}</p>
+                {!Object.values(character?.dateOfBirth).some(value => value === null || value === undefined) && (
+                  <p className="text-sm"><strong>Birthday:</strong> {new Date(character?.dateOfBirth.year, character?.dateOfBirth.month - 1, character?.dateOfBirth.day).toISOString().split('T')[0]}</p>
                 )}
                 {character?.age && (
                   <p className="text-sm"><strong>Age:</strong> {character?.age}</p>

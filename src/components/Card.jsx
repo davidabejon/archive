@@ -21,7 +21,7 @@ function Card({ imageSrc, title, subtitle, link, tag, type, secondImageSrc, seco
           <div className="card-content">
             <div className='card-title'>
               {tag && <span className="text-blue-300 font-bold text-xs">{tag}</span>}
-              <Link to={link} className='text-right'>{secondTitle}</Link>
+              <Link to={secondLink} className='text-right'>{secondTitle}</Link>
             </div>
             <p className="card-subtitle secondary text-xs text-right">{secondSubtitle}</p>
           </div>
