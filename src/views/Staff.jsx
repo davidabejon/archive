@@ -5,6 +5,7 @@ import Loading from "../components/Loading"
 import ReadMoreText from "../components/ReadMoreText"
 import { marked } from "marked"
 import CharacterList from "../components/People/CharacterList"
+import { checkLinks } from "../helper"
 
 function Staff() {
 
@@ -89,7 +90,7 @@ function Staff() {
                 {staff?.bloodType && (
                   <p className="text-sm"><strong>Blood Type:</strong> {staff?.bloodType}</p>
                 )}
-                <ReadMoreText text={marked.parse(staff?.description || "").replace(/\n/g, "<br>")} maxLength={900} />
+                <ReadMoreText text={checkLinks(marked.parse(staff?.description || "").replace(/\n/g, "<br>"))} maxLength={900} />
               </div>
             </div>
           </div>

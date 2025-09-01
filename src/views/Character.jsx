@@ -6,6 +6,7 @@ import '../styles/Character.css'
 import { marked } from "marked"
 import ReadMoreText from "../components/ReadMoreText"
 import Card from "../components/Card"
+import { checkLinks } from "../helper"
 
 function Character() {
 
@@ -81,7 +82,7 @@ function Character() {
                 {character?.gender && (
                   <p className="text-sm"><strong>Gender:</strong> {character?.gender}</p>
                 )}
-                <ReadMoreText text={marked.parse(character?.description || "").replace(/\n/g, "<br>")} maxLength={900} />
+                <ReadMoreText text={checkLinks(marked.parse(character?.description || "").replace(/\n/g, "<br>"))} maxLength={900} />
               </div>
             </div>
           </div>

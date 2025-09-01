@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import { getAnimeByID } from '../api/queries'
 import SideInfo from '../components/Entry/SideInfo'
 import EntryTabs from '../components/Entry/EntryTabs'
-import { capitalize } from '../helper'
+import { capitalize, checkLinks } from '../helper'
 import { useNavigate, useParams } from 'react-router-dom'
 import { formats, statuses } from '../constants'
 import Loading from '../components/Loading'
@@ -77,7 +77,7 @@ function Entry() {
               <img className='entry-poster' src={film?.coverImage.large} alt={film?.title.english} />
               <div className='entry-info'>
                 <h1 className='text-lg'>{film?.title.english || film?.title.romaji || film?.title.native}</h1>
-                <ReadMoreText className='secondary' text={film?.description} maxLength={MAX_DESCRIPTION_LENGTH} />
+                <ReadMoreText className='secondary' text={checkLinks(film?.description)} maxLength={MAX_DESCRIPTION_LENGTH} />
               </div>
             </div>
 

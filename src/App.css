@@ -33,7 +33,11 @@ body {
 }
 
 a {
-  color: inherit;
+  color: black;
+  transition: color 0.3s;
+}
+a:hover {
+  color: rgb(163, 192, 255);
 }
 
 .markdown_spoiler::before {
