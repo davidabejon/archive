@@ -6,6 +6,8 @@ import ReadMoreText from "../components/ReadMoreText"
 import { marked } from "marked"
 import CharacterList from "../components/People/CharacterList"
 import { checkLinks } from "../helper"
+import StaffRolesList from "../components/People/StaffRolesList"
+import { motion } from "framer-motion"
 
 function Staff() {
 
@@ -14,6 +16,8 @@ function Staff() {
 
   const [staff, setStaff] = useState(null)
   const [loading, setLoading] = useState(true)
+  const [hasImgLoaded, setHasImgLoaded] = useState(false)
+  const [isPageFinal, setIsPageFinal] = useState(false)
 
   var variables = {
     id
@@ -47,7 +51,6 @@ function Staff() {
 
   function handleData(data) {
     setLoading(false)
-    console.log(data.data.Staff)
     setStaff(data.data.Staff)
     document.title = data.data.Staff.name.full + " - Archive"
     window.history.replaceState({}, '', `/staff/${id}/${data.data.Staff.name.full ? data.data.Staff.name.full.replace(/ /g, '-') : data.data.Staff.name.native ? data.data.Staff.name.native.replace(/ /g, '-') : ''}`)
@@ -65,7 +68,14 @@ function Staff() {
       {loading ? <Loading /> :
         <>
           <div className="character">
-            <img src={staff?.image?.large} alt={staff?.name} />
+            <motion.img
+              initial={{ opacity: 0 }}
+              animate={{ opacity: hasImgLoaded ? 1 : 0 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+              src={staff?.image?.large}
+              alt={staff?.name}
+              onLoad={() => setHasImgLoaded(true)}
+            />
             <div className="character-info">
               <div className="character-name">
                 <h2 className="h2">{staff?.name.full}</h2>
@@ -94,7 +104,8 @@ function Staff() {
               </div>
             </div>
           </div>
-          <CharacterList />
+          <CharacterList setIsPageFinal={setIsPageFinal} />
+          <StaffRolesList enabled={isPageFinal} />
         </>
       }
     </>

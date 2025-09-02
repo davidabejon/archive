@@ -5,8 +5,8 @@ import Loading from "../components/Loading"
 import '../styles/Character.css'
 import { marked } from "marked"
 import ReadMoreText from "../components/ReadMoreText"
-import Card from "../components/Card"
 import { checkLinks } from "../helper"
+import { motion } from "framer-motion"
 
 function Character() {
 
@@ -15,6 +15,7 @@ function Character() {
 
   const [character, setCharacter] = useState(null)
   const [loading, setLoading] = useState(true)
+  const [hasImgLoaded, setHasImgLoaded] = useState(false)
 
   var variables = {
     id
@@ -48,7 +49,6 @@ function Character() {
 
   function handleData(data) {
     setLoading(false)
-    console.log(data.data.Character)
     setCharacter(data.data.Character)
     document.title = data.data.Character.name.full + " - Archive"
     window.history.replaceState({}, '', `/character/${id}/${data.data.Character.name.full ? data.data.Character.name.full.replace(/ /g, '-') : data.data.Character.name.native ? data.data.Character.name.native.replace(/ /g, '-') : ''}`)
@@ -65,8 +65,15 @@ function Character() {
     <>
       {loading ? <Loading /> :
         <>
-          <div className="character">
-            <img src={character?.image?.large} alt={character?.name} />
+          <div className="character mb-10">
+            <motion.img
+              initial={{ opacity: 0 }}
+              animate={{ opacity: hasImgLoaded ? 1 : 0 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+              src={character?.image?.large}
+              alt={character?.name}
+              onLoad={() => setHasImgLoaded(true)}
+            />
             <div className="character-info">
               <div className="character-name">
                 <h2 className="h2">{character?.name.full}</h2>
@@ -90,10 +97,17 @@ function Character() {
             character?.media?.edges?.length > 0 && (
               <div className="character-media">
                 {character.media.edges.map(edge => (
-                  <Link to={`/${edge.node.type.toLowerCase()}/${edge.node.id}`} key={edge.node.id} className="flex flex-col" style={{ maxWidth: '200px' }}>
-                    <img src={edge.node.coverImage.large} alt={edge.node.title.english || edge.node.title.romaji || edge.node.title.native} />
-                    <p className="mt-1 text-sm secondary font-bold">{edge.node.title.english || edge.node.title.romaji || edge.node.title.native}</p>
-                  </Link>
+                  <motion.div
+                    initial={{ scale: 0.95, opacity: 0 }}
+                    whileInView={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 0.3, ease: "easeOut" }}
+                    viewport={{ once: true, amount: 0.2 }}
+                  >
+                    <Link to={`/${edge.node.type.toLowerCase()}/${edge.node.id}`} key={edge.node.id} className="flex flex-col" style={{ maxWidth: '200px' }}>
+                      <img src={edge.node.coverImage.large} alt={edge.node.title.english || edge.node.title.romaji || edge.node.title.native} />
+                      <p className="mt-1 text-sm secondary font-bold lines-two">{edge.node.title.english || edge.node.title.romaji || edge.node.title.native}</p>
+                    </Link>
+                  </motion.div>
                 ))}
               </div>
             )

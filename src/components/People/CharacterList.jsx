@@ -2,8 +2,9 @@ import { useEffect, useState } from "react"
 import { Link, useNavigate, useParams } from "react-router-dom"
 import { getStaffCharacters } from "../../api/queries"
 import { Button } from "antd"
+import { motion } from "framer-motion";
 
-function CharacterList() {
+function CharacterList({ setIsPageFinal }) {
   let navigate = useNavigate()
   const { id } = useParams()
 
@@ -49,7 +50,6 @@ function CharacterList() {
 
   function handleData(data) {
     setLoading(false)
-    console.log(data.data.Staff.characterMedia)
     setCharacters((prevState) => {
       return {
         edges: [
@@ -89,37 +89,47 @@ function CharacterList() {
     })
     : []
 
+  useEffect(() => {
+    setIsPageFinal(!characters?.pageInfo.hasNextPage)
+  }, [characters])
 
   return (
     <div className="mb-10 mt-10">
       {sortedYears.map((year) => (
         <div key={year} className="mb-4">
-          <h2 className="text-xl font-bold text-gray-500" style={{ padding: '0 10vw' }}>{year}</h2>
+          <h2 className="text-xl font-bold text-gray-500 padding-center">{year}</h2>
           <div className="character-media flex flex-wrap gap-4">
             {groupedByYear[year].map((edge) => (
-              <Link
-                to={`/character/${edge.characters[0].id}`}
-                key={edge.node.id + "-" + edge.characters[0].id}
-                className="flex flex-col"
-                style={{ maxWidth: "200px" }}
+              <motion.div
+                initial={{ scale: 0.95, opacity: 0 }}
+                whileInView={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+                viewport={{ once: true, amount: 0.2 }}
               >
-                <img
-                  src={edge.characters[0].image.large}
-                  alt={edge.characters[0].name.userPreferred}
-                />
-                <p className="mt-1 secondary font-bold">
-                  {edge.characters[0].name.userPreferred}
-                </p>
-                <p className="text-sm secondary">
-                  {edge.node.title.userPreferred}
-                </p>
-              </Link>
+                <Link
+                  to={`/character/${edge.characters[0].id}`}
+                  key={edge.node.id + "-" + edge.characters[0].id}
+                  className="flex flex-col"
+                  style={{ maxWidth: "200px" }}
+                >
+                  <img
+                    src={edge.characters[0].image.large}
+                    alt={edge.characters[0].name.userPreferred}
+                  />
+                  <p className="mt-1 secondary font-bold lines-two">
+                    {edge.characters[0].name.userPreferred}
+                  </p>
+                  <p className="text-sm secondary lines-two">
+                    {edge.node.title.userPreferred}
+                  </p>
+                </Link>
+              </motion.div>
             ))}
           </div>
         </div>
       ))}
 
-      <div style={{ padding: "0 10vw" }}>
+      <div className="padding-center">
         {characters?.pageInfo.hasNextPage && (
           <Button type="primary" onClick={loadMore} loading={loading}>
             Load More

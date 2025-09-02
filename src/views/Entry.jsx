@@ -7,7 +7,6 @@ import { capitalize, checkLinks } from '../helper'
 import { useNavigate, useParams } from 'react-router-dom'
 import { formats, statuses } from '../constants'
 import Loading from '../components/Loading'
-import { Modal } from 'antd'
 import ReadMoreText from '../components/ReadMoreText'
 
 const MAX_DESCRIPTION_LENGTH = 600
@@ -55,7 +54,6 @@ function Entry() {
   function handleData(data) {
     setLoading(false)
     setFilm(data.data.Media)
-    console.log(data.data.Media)
     document.title = `${data.data.Media.title.english || data.data.Media.title.romaji || data.data.Media.title.native} · Archive` || 'Archive'
     window.history.replaceState({}, '', `/${type}/${id}/${data.data.Media.title.english ? data.data.Media.title.english.replace(/ /g, '-') : data.data.Media.title.romaji ? data.data.Media.title.romaji.replace(/ /g, '-') : data.data.Media.title.native.replace(/ /g, '-')}`)
   }

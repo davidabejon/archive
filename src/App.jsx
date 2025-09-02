@@ -10,7 +10,6 @@ function App() {
     const spoilers = document.querySelectorAll('.markdown_spoiler')
     spoilers.forEach(spoiler => {
       if (spoiler.contains(event.target)) {
-        console.log(spoiler.classList)
         if (spoiler.classList.contains('spoiler-active')) {
           spoiler.classList.remove('spoiler-active')
         } else {
