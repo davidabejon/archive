@@ -67,6 +67,7 @@ function Overview({ relations, characters, staff, trailer }) {
                   imageSrc={member.image.medium}
                   title={member.name.full || member.name.native}
                   subtitle={capitalize(member.role)}
+                  link={`/staff/${member.id}`}
                   type={'default-sm'}
                 />
               ))
@@ -77,7 +78,6 @@ function Overview({ relations, characters, staff, trailer }) {
       {trailer && (
         <>
           <h6 className="h5 mb-2 mt-8">Trailer</h6>
-          {/* embed a youtube video */}
           <iframe
             className='trailer'
             src={`${trailer.site === 'youtube' ? YT_URL : DAILYMOTION_URL}${trailer.id}`}

@@ -37,7 +37,7 @@ function ReadMoreText({ text, maxLength = 300, className = "" }) {
             </Modal>
           </>
           :
-          <p className={`text-sm mt-3 w-full ${className}`} dangerouslySetInnerHTML={{ __html: new DOMParser().parseFromString(text, 'text/html').body.innerHTML }} />
+          <p className={`text-sm w-full ${className}`} dangerouslySetInnerHTML={{ __html: new DOMParser().parseFromString(text, 'text/html').body.innerHTML }} />
       }
     </>
   )

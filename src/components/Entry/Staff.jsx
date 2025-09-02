@@ -73,6 +73,7 @@ function Staff() {
             imageSrc={member.image.medium}
             title={member.name.full || member.name.native}
             subtitle={capitalize(member.role)}
+            link={`/staff/${member.id}`}
             type={'default-sm'}
           />
         ))}
