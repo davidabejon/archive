@@ -1,8 +1,13 @@
 import { Link } from 'react-router-dom'
 import '../styles/Card.css'
 import { motion } from "framer-motion";
+import { useState } from 'react';
 
 function Card({ imageSrc, title, subtitle, link, tag, type, secondImageSrc, secondTitle, secondSubtitle, secondLink }) {
+
+  const [hasFirstImgLoaded, setHasFirstImgLoaded] = useState(false)
+  const [hasSecondImgLoaded, setHasSecondImgLoaded] = useState(false)
+
   return (
     <motion.div
       initial={{ scale: 0.97, opacity: 0 }}
@@ -15,7 +20,15 @@ function Card({ imageSrc, title, subtitle, link, tag, type, secondImageSrc, seco
           <div className="card-double">
             <div className='card-double-container'>
               <Link to={link}>
-                <img src={imageSrc} alt={title} className="card-double-image" />
+                <motion.img
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: hasFirstImgLoaded ? 1 : 0 }}
+                  transition={{ duration: 0.3, ease: "easeOut" }}
+                  src={imageSrc}
+                  alt={title}
+                  className="card-double-image"
+                  onLoad={() => setHasFirstImgLoaded(true)}
+                />
               </Link>
               <div className="card-content">
                 <div className='card-title'>
@@ -33,9 +46,18 @@ function Card({ imageSrc, title, subtitle, link, tag, type, secondImageSrc, seco
                 </div>
                 <p className="card-subtitle secondary text-xs text-right">{secondSubtitle}</p>
               </div>
-              <Link to={secondLink}>
-                <img src={secondImageSrc} alt={secondTitle} className="card-double-image" />
-              </Link>
+              {secondLink && (
+                <Link to={secondLink}>
+                  <motion.img
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: hasSecondImgLoaded ? 1 : 0 }}
+                    transition={{ duration: 0.3, ease: "easeOut" }}
+                    src={secondImageSrc}
+                    alt={secondTitle}
+                    className="card-double-image"
+                    onLoad={() => setHasSecondImgLoaded(true)}
+                  />
+                </Link>)}
             </div>
           </div>
           : type === 'small' ?

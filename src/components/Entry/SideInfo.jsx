@@ -56,9 +56,9 @@ function SideInfo({ format, episodes, chapters, volumes, duration, startDate, en
         <Info tag="Romaji" value={romaji} />
         <Info tag="English" value={english} />
         <Info tag="Native" value={native} />
-        <Info tag="Alternative titles" value={alternativeTitles} />
+        {alternativeTitles?.length > 0 && <Info tag="Alternative titles" value={alternativeTitles} />}
       </div>
-      <h6 className="h6 mt-2">External & Streaming Links</h6>
+      {externalLinks?.length > 0 && <h6 className="h6 mt-2">External & Streaming Links</h6>}
       {externalLinks?.map(link => (
         <ExternalLink
           key={link.site}

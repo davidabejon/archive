@@ -85,10 +85,10 @@ function StaffRolesList({ enabled = false }) {
     }
   }, [animeRoles])
 
-  if (enabled)
+  if (enabled && animeRoles?.edges.length > 0 && !mangaRoles?.edges.length > 0)
     return (
       <div className="mt-10 mb-10">
-        {animeRoles && <h2 className="text-2xl font-bold text-gray-500 mb-4 padding-center">Anime Staff Roles</h2>}
+        {animeRoles?.edges.length > 0 && <h2 className="text-xl font-bold text-gray-500 mb-4 padding-center">Anime Staff Roles</h2>}
         <div className="character-media">
           {animeRoles?.edges.map((edge) => (
             <motion.div
@@ -116,7 +116,7 @@ function StaffRolesList({ enabled = false }) {
             </motion.div>
           ))}
         </div>
-        {mangaRoles && <h2 className="text-2xl font-bold text-gray-500 mb-4 mt-10 padding-center">Manga Staff Roles</h2>}
+        {mangaRoles?.edges.length > 0 && <h2 className="text-xl font-bold text-gray-500 mb-4 mt-10 padding-center">Manga Staff Roles</h2>}
         <div className="character-media">
           {mangaRoles?.edges.map((edge) => (
             <motion.div

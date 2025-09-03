@@ -77,7 +77,7 @@ function Characters() {
             subtitle={capitalize(character.role)}
             secondSubtitle={capitalize(character.voiceActors[0]?.languageV2)}
             link={`/character/${character.id}`}
-            secondLink={`/staff/${character.voiceActors[0]?.id}`}
+            secondLink={character.voiceActors[0]?.id ? `/staff/${character.voiceActors[0]?.id}` : null}
             type={"double"}
           />
         ))}
