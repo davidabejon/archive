@@ -69,6 +69,12 @@ a:hover {
   overflow: hidden;
   -webkit-line-clamp: 2;
 }
+.lines-one {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  -webkit-line-clamp: 1;
+}
 
 .padding-center {
   padding: 0 15vw;

@@ -252,3 +252,7 @@ query ($id: Int, $type: MediaType, $page: Int, $perPage: Int) {
   }
 }
 `
+
+export const getTrending = `
+query{Trending:Page(perPage:5){media(isAdult:false,sort:TRENDING_DESC){...media}}NewAnime:Page(perPage:5){media(type:ANIME,isAdult:false,sort:ID_DESC){...media}}NewManga:Page(perPage:5){media(type:MANGA,isAdult:false,sort:ID_DESC){...media}}}fragment media on Media{id type status(version:2)format episodes chapters trending bannerImage title{userPreferred}coverImage{large}}
+`

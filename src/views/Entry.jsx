@@ -8,6 +8,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { formats, statuses } from '../constants'
 import Loading from '../components/Loading'
 import ReadMoreText from '../components/ReadMoreText'
+import PageTransition from '../components/PageTransition'
 
 const MAX_DESCRIPTION_LENGTH = 600
 
@@ -66,7 +67,7 @@ function Entry() {
   }
 
   return (
-    <>
+    <PageTransition>
       {loading ? <Loading /> :
         <>
           {film?.bannerImage ? <div className='banner' style={{ backgroundImage: `url(${film?.bannerImage})` }} /> : <div className='banner-placeholder'></div>}
@@ -129,7 +130,7 @@ function Entry() {
 
           </div>
         </>}
-    </>
+    </PageTransition>
   )
 }
 

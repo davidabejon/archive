@@ -34,6 +34,13 @@ export const statuses = {
     CANCELLED: 'Cancelled',
     HIATUS: 'Hiatus'
 }
+export const statusColors = {
+    FINISHED: '#4CAF50',
+    RELEASING: '#2196F3',
+    NOT_YET_RELEASED: '#9E9E9E',
+    CANCELLED: '#F44336',
+    HIATUS: '#FFEB3B'
+}
 
 export const YT_URL = 'https://www.youtube.com/embed/'
 export const DAILYMOTION_URL = 'https://www.dailymotion.com/embed/video/'

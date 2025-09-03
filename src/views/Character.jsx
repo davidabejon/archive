@@ -7,6 +7,7 @@ import { marked } from "marked"
 import ReadMoreText from "../components/ReadMoreText"
 import { checkLinks } from "../helper"
 import { motion } from "framer-motion"
+import PageTransition from "../components/PageTransition"
 
 function Character() {
 
@@ -62,7 +63,7 @@ function Character() {
   }
 
   return (
-    <>
+    <PageTransition>
       {loading ? <Loading /> :
         <>
           <div className="character mb-10">
@@ -95,7 +96,7 @@ function Character() {
           </div>
           {
             character?.media?.edges?.length > 0 && (
-              <div className="character-media">
+              <div className="image-grid padding-center">
                 {character.media.edges.map(edge => (
                   <motion.div
                     initial={{ scale: 0.95, opacity: 0 }}
@@ -114,7 +115,7 @@ function Character() {
           }
         </>
       }
-    </>
+    </PageTransition>
   );
 }
 

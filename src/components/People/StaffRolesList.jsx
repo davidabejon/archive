@@ -89,7 +89,7 @@ function StaffRolesList({ enabled = false }) {
     return (
       <div className="mt-10 mb-10">
         {animeRoles?.edges.length > 0 && <h2 className="text-xl font-bold text-gray-500 mb-4 padding-center">Anime Staff Roles</h2>}
-        <div className="character-media">
+        <div className="image-grid padding-center">
           {animeRoles?.edges.map((edge) => (
             <motion.div
               initial={{ scale: 0.95, opacity: 0 }}
@@ -117,7 +117,7 @@ function StaffRolesList({ enabled = false }) {
           ))}
         </div>
         {mangaRoles?.edges.length > 0 && <h2 className="text-xl font-bold text-gray-500 mb-4 mt-10 padding-center">Manga Staff Roles</h2>}
-        <div className="character-media">
+        <div className="image-grid">
           {mangaRoles?.edges.map((edge) => (
             <motion.div
               initial={{ scale: 0.95, opacity: 0 }}

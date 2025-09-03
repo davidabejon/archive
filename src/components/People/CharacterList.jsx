@@ -98,7 +98,7 @@ function CharacterList({ setIsPageFinal }) {
       {sortedYears.map((year) => (
         <div key={year} className="mb-4">
           <h2 className="text-xl font-bold text-gray-500 padding-center">{year}</h2>
-          <div className="character-media flex flex-wrap gap-4">
+          <div className="padding-center image-grid flex flex-wrap gap-4">
             {groupedByYear[year].map((edge) => (
               <motion.div
                 initial={{ scale: 0.95, opacity: 0 }}

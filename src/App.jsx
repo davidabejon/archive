@@ -3,6 +3,8 @@ import './App.css'
 import Entry from './views/Entry'
 import Character from './views/Character'
 import Staff from './views/Staff'
+import Home from './views/Home'
+import { div } from 'motion/react-client'
 
 function App() {
 
@@ -22,7 +24,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path={'/'} element={'/'} />
+        <Route path={'/'} element={<Home />} />
         <Route path={'/:type/:id/:title?'} element={<Entry />} />
         <Route path={'/character/:id/:name?'} element={<Character />} />
         <Route path={'/staff/:id/:name?'} element={<Staff />} />
