@@ -1,11 +1,14 @@
 import { Link, useNavigate } from "react-router-dom"
 import { getTrending } from "../api/queries"
 import { useEffect, useState } from "react"
-import { motion } from "framer-motion";
-import { statusColors, statuses } from "../constants";
-import ImageSkeleton from "../components/ImageSkeleton";
-import { Skeleton } from "antd";
-import PageTransition from "../components/PageTransition";
+import { motion } from "framer-motion"
+import { statusColors, statuses } from "../constants"
+import ImageSkeleton from "../components/ImageSkeleton"
+import { Skeleton } from "antd"
+import PageTransition from "../components/PageTransition"
+import "../styles/Home.css"
+import { FaAnglesDown } from "react-icons/fa6";
+import bgImage from '../assets/bright-pop-landscape.jpg'
 
 function Home() {
 
@@ -57,17 +60,35 @@ function Home() {
   }
 
   return (
-    <PageTransition>
+    <PageTransition x={0}>
       <div className="mb-5">
-        <div className="search-bar">
-          <input type="text" placeholder="Search..." />
-        </div>
+        <motion.div className="home-search-banner" layoutId="search-banner" transition={{ duration: 0.5 }}>
+          <motion.div
+            className="absolute inset-0 bg-cover bg-center -z-10"
+            style={{ backgroundImage: `url(${bgImage})` }}
+          />
+          <motion.input
+            layoutId="search-bar"
+            transition={{ duration: 0.5 }}
+            className="home-search-input"
+            type="text" placeholder="Search..."
+            onFocus={() => navigate("/search")}
+          />
+          <motion.h1
+            initial={{ opacity: 0, y: -30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5, duration: 0.8, ease: "easeOut" }}
+            viewport={{ once: true, amount: 0.2 }}
+            className="home-search-title font-bold text-white flex gap-3 justify-center items-center"
+          >
+            Explore new Anime & Manga <FaAnglesDown />
+          </motion.h1>
+        </motion.div>
 
         <div className="padding-center">
           {trending?.length > 0 ? <h2 className="text-xl font-bold text-gray-500 mt-5">Trending</h2>
             : <Skeleton active paragraph={{ rows: 0 }} className="mt-5 w-2" />}
-          <div className="image-grid px-10 pt-10 rounded-md bg-white">
-            {/* 5 image skeleton */}
+          <div className="image-grid p-5 rounded-md bg-white">
             {loadingTrending && Array.from({ length: 5 }).map((_, index) => <ImageSkeleton key={index} />)}
             {trending?.map((item) => (
               <motion.div
@@ -97,7 +118,7 @@ function Home() {
           </div>
           {trending?.length > 0 ? <h2 className="text-xl font-bold text-gray-500 mt-5">Newly Added Anime</h2>
             : <Skeleton active paragraph={{ rows: 0 }} className="mt-5 w-2" />}
-          <div className="image-grid px-10 pt-10 rounded-md bg-white">
+          <div className="image-grid p-5 rounded-md bg-white">
             {loadingTrending && Array.from({ length: 5 }).map((_, index) => <ImageSkeleton key={index} />)}
             {newAnime?.map((item) => (
               <motion.div
@@ -127,7 +148,7 @@ function Home() {
           </div>
           {trending?.length > 0 ? <h2 className="text-xl font-bold text-gray-500 mt-5">Newly Added Manga</h2>
             : <Skeleton active paragraph={{ rows: 0 }} className="mt-5 w-2" />}
-          <div className="image-grid px-10 pt-10 rounded-md bg-white">
+          <div className="image-grid p-5 rounded-md bg-white">
             {loadingTrending && Array.from({ length: 5 }).map((_, index) => <ImageSkeleton key={index} />)}
             {newManga?.map((item) => (
               <motion.div
