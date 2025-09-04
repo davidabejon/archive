@@ -66,6 +66,9 @@ function Home() {
           <motion.div
             className="absolute inset-0 bg-cover bg-center -z-10"
             style={{ backgroundImage: `url(${bgImage})` }}
+            transition={{ delay: 0.1, duration: 1 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
           />
           <motion.input
             layoutId="search-bar"

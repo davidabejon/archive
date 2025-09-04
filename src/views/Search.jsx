@@ -7,7 +7,7 @@ function Search() {
       <motion.div
         className="absolute inset-0 bg-cover bg-center -z-10"
         style={{ backgroundImage: `url(${bgImage})` }}
-        transition={{ delay: 0.5, duration: 1 }}
+        transition={{ delay: 0.25, duration: 1 }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
       />
