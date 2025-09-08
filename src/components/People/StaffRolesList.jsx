@@ -45,7 +45,7 @@ function StaffRolesList({ enabled = false }) {
       .then(handleResponse)
       .then(handleData)
       .catch(handleError)
-  }, [id, staffPage, sort, enabled])
+  }, [id, staffPage, sort, enabled, type])
 
   function handleResponse(response) {
     return response.json().then(function (json) {
@@ -85,7 +85,7 @@ function StaffRolesList({ enabled = false }) {
     }
   }, [animeRoles])
 
-  if (enabled && animeRoles?.edges.length > 0 && !mangaRoles?.edges.length > 0)
+  if (enabled && (animeRoles?.edges.length > 0 || !mangaRoles?.edges.length > 0))
     return (
       <div className="mt-10 mb-10">
         {animeRoles?.edges.length > 0 && <h2 className="text-xl font-bold text-gray-500 mb-4 padding-center">Anime Staff Roles</h2>}
@@ -117,7 +117,7 @@ function StaffRolesList({ enabled = false }) {
           ))}
         </div>
         {mangaRoles?.edges.length > 0 && <h2 className="text-xl font-bold text-gray-500 mb-4 mt-10 padding-center">Manga Staff Roles</h2>}
-        <div className="image-grid">
+        <div className="image-grid padding-center">
           {mangaRoles?.edges.map((edge) => (
             <motion.div
               initial={{ scale: 0.95, opacity: 0 }}
