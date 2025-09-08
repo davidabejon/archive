@@ -7,6 +7,7 @@ import Home from './views/Home'
 import { div } from 'motion/react-client'
 import { AnimatePresence, LayoutGroup } from 'motion/react'
 import Search from './views/Search'
+import Navbar from './components/Navbar'
 
 function App() {
 
@@ -24,20 +25,23 @@ function App() {
   })
 
   return (
-    <Router>
-      <LayoutGroup>
-        <AnimatePresence mode="wait">
-          <Routes>
-            <Route path={'/'} element={<Home />} />
-            <Route path={'/search'} element={<Search />} />
-            <Route path={'/:type/:id/:title?'} element={<Entry />} />
-            <Route path={'/character/:id/:name?'} element={<Character />} />
-            <Route path={'/staff/:id/:name?'} element={<Staff />} />
-            <Route path={'*'} element={'not found'} />
-          </Routes>
-        </AnimatePresence>
-      </LayoutGroup>
-    </Router>
+    <>
+      <Router>
+        <Navbar />
+        <LayoutGroup>
+          <AnimatePresence mode="wait">
+            <Routes>
+              <Route path={'/'} element={<Home />} />
+              <Route path={'/search'} element={<Search />} />
+              <Route path={'/:type/:id/:title?'} element={<Entry />} />
+              <Route path={'/character/:id/:name?'} element={<Character />} />
+              <Route path={'/staff/:id/:name?'} element={<Staff />} />
+              <Route path={'*'} element={'not found'} />
+            </Routes>
+          </AnimatePresence>
+        </LayoutGroup>
+      </Router>
+    </>
   )
 }
 

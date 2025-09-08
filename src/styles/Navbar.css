@@ -1,0 +1,62 @@
+nav {
+    background-color: rgba(43, 45, 67, 0.6);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100vw;
+    z-index: 1000;
+    padding: 1rem 15vw;
+    transition: background-color 0.3s;
+}
+
+nav:hover {
+    background-color: rgba(43, 45, 67, 0.9);
+}
+
+@media (max-width: 900px) {
+    nav {
+        padding: 1rem 10vw;
+    }
+}
+
+@media (max-width: 600px) {
+    nav {
+        padding: 1rem 1rem;
+    }
+}
+
+.nav-links {
+    gap: 2.5rem;
+}
+
+@media (max-width: 600px) {
+    .nav-links {
+        font-size: 0.9rem;
+        gap: 1rem;
+    }
+    .home svg {
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+}
+
+.nav-links-right {
+    gap: 1rem;
+}
+
+.icon-link svg {
+    transition: all 0.3s;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: rgb(197, 197, 197);
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.nav-link:hover, .icon-link:hover svg {
+    color: rgb(231, 231, 231);
+    fill: rgb(231, 231, 231);
+}
