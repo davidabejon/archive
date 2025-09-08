@@ -92,7 +92,7 @@ function Home() {
           {trending?.length > 0 ? <h2 className="text-xl font-bold text-gray-500 mt-5">Trending</h2>
             : <Skeleton active paragraph={{ rows: 0 }} className="mt-5 w-2" />}
           <div className="image-grid p-5 rounded-md bg-white">
-            {loadingTrending && Array.from({ length: 5 }).map((_, index) => <ImageSkeleton key={index} />)}
+            {loadingTrending && Array.from({ length: 6 }).map((_, index) => <ImageSkeleton key={index} />)}
             {trending?.map((item) => (
               <motion.div
                 initial={{ scale: 0.95, opacity: 0 }}
@@ -122,7 +122,7 @@ function Home() {
           {trending?.length > 0 ? <h2 className="text-xl font-bold text-gray-500 mt-5">Newly Added Anime</h2>
             : <Skeleton active paragraph={{ rows: 0 }} className="mt-5 w-2" />}
           <div className="image-grid p-5 rounded-md bg-white">
-            {loadingTrending && Array.from({ length: 5 }).map((_, index) => <ImageSkeleton key={index} />)}
+            {loadingTrending && Array.from({ length: 6 }).map((_, index) => <ImageSkeleton key={index} />)}
             {newAnime?.map((item) => (
               <motion.div
                 initial={{ scale: 0.95, opacity: 0 }}
@@ -152,7 +152,7 @@ function Home() {
           {trending?.length > 0 ? <h2 className="text-xl font-bold text-gray-500 mt-5">Newly Added Manga</h2>
             : <Skeleton active paragraph={{ rows: 0 }} className="mt-5 w-2" />}
           <div className="image-grid p-5 rounded-md bg-white">
-            {loadingTrending && Array.from({ length: 5 }).map((_, index) => <ImageSkeleton key={index} />)}
+            {loadingTrending && Array.from({ length: 6 }).map((_, index) => <ImageSkeleton key={index} />)}
             {newManga?.map((item) => (
               <motion.div
                 initial={{ scale: 0.95, opacity: 0 }}
