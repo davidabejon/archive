@@ -13,7 +13,7 @@ function Overview({ relations, characters, staff, trailer }) {
 
   return (
     <div>
-      {relations && (
+      {relations?.length > 0 && (
         <>
           <h6 className="h5 mb-2">Relations</h6>
           <div className="flex gap-4 flex-wrap">
@@ -33,9 +33,9 @@ function Overview({ relations, characters, staff, trailer }) {
           </div>
         </>
       )}
-      {characters && (
+      {characters?.length > 0 && (
         <>
-          <h6 className="h5 mb-2 mt-8">Characters</h6>
+          <h6 className={`h5 mb-2 ${relations?.length > 0 ? 'mt-8' : ''}`}>Characters</h6>
           <div className="flex gap-4 flex-wrap">
             {
               characters.map((character) => (
@@ -56,9 +56,9 @@ function Overview({ relations, characters, staff, trailer }) {
           </div>
         </>
       )}
-      {staff && (
+      {staff?.length > 0 && (
         <>
-          <h6 className="h5 mb-2 mt-8">Staff</h6>
+          <h6 className={`h5 mb-2 ${characters?.length > 0 ? 'mt-8' : ''}`}>Staff</h6>
           <div className="flex gap-4 flex-wrap">
             {
               staff.map((member) => (

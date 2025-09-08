@@ -62,9 +62,11 @@ function Staff() {
 
   return (
     <div>
-      {loading && staff.length === 0 && (
+      {loading && staff.length === 0 ? (
         <Spinner />
-      )}
+      ) : !loading && staff.length === 0 ? (
+        <div className="text-lg">No staff found :(</div>
+      ) : null}
       {error && <p className="text-red-500">Error: {error}</p>}
       <div className="flex flex-wrap gap-4">
         {staff.map(member => (

@@ -63,9 +63,11 @@ function Characters() {
 
   return (
     <>
-      {loading && characters.length === 0 && (
+      {loading && characters.length === 0 ? (
         <Spinner />
-      )}
+      ) : !loading && characters.length === 0 ? (
+        <div className="text-lg">No characters found :(</div>
+      ) : null}
       <div className="flex flex-wrap gap-4">
         {characters.map(character => (
           <Card
