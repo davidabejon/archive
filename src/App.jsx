@@ -8,6 +8,7 @@ import { div } from 'motion/react-client'
 import { AnimatePresence, LayoutGroup } from 'motion/react'
 import Search from './views/Search'
 import Navbar from './components/Navbar'
+import NotFound from './views/NotFound'
 
 function App() {
 
@@ -36,7 +37,7 @@ function App() {
               <Route path={'/:type/:id/:title?'} element={<Entry />} />
               <Route path={'/character/:id/:name?'} element={<Character />} />
               <Route path={'/staff/:id/:name?'} element={<Staff />} />
-              <Route path={'*'} element={'not found'} />
+              <Route path={'*'} element={<NotFound />} />
             </Routes>
           </AnimatePresence>
         </LayoutGroup>
