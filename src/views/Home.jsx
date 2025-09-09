@@ -33,6 +33,8 @@ function Home() {
     }
 
   useEffect(() => {
+    window.scrollTo(0, 0)
+    document.title = 'Home · Archive'
     setLoadingTrending(true)
     fetch(url, options).then(handleResponse)
       .then(handleData)

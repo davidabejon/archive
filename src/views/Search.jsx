@@ -157,7 +157,7 @@ function Search() {
                   key={item.id}
                   title={item.name.full || item.name.native}
                   imageSrc={item.image.large}
-                  link={`/character/${item.id}/${item.name.full ? item.name.full.replace(/ /g, '-') : item.name.native.replace(/ /g, '-')}`}
+                  link={`/character/${item.id}`}
                   type={'default-sm'}
                 />
               ))}
@@ -174,7 +174,7 @@ function Search() {
                   key={item.id}
                   title={item.name.full || item.name.native}
                   imageSrc={item.image.large}
-                  link={`/staff/${item.id}/${item.name.full ? item.name.full.replace(/ /g, '-') : item.name.native.replace(/ /g, '-')}`}
+                  link={`/staff/${item.id}`}
                   type={'default-sm'}
                 />
               ))}

@@ -266,7 +266,7 @@ query ($search: String, $page: Int, $perPage: Int) {
       lastPage
       hasNextPage
     }
-    media(search: $search, type: ANIME) {
+    media(search: $search, type: ANIME, isAdult: false) {
       id
       type
       title {
@@ -290,7 +290,7 @@ query ($search: String, $page: Int, $perPage: Int) {
       lastPage
       hasNextPage
     }
-    media(search: $search, type: MANGA) {
+    media(search: $search, type: MANGA, isAdult: false) {
       id
       type
       title {
