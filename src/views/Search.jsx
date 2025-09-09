@@ -17,6 +17,7 @@ function Search() {
 
   const [loading, setLoading] = useState(false)
   const [page, setPage] = useState(1)
+  const [hasFetchedData, setHasFetchedData] = useState(false)
   const [anime, setAnime] = useState([])
   const [manga, setManga] = useState([])
   const [characters, setCharacters] = useState([])
@@ -79,12 +80,19 @@ function Search() {
     setManga(data.data.manga.media)
     setCharacters(data.data.characters.characters)
     setStaff(data.data.staff.staff)
+    setHasFetchedData(true)
   }
 
   function handleError(error) {
     setLoading(false)
     console.error(error)
     navigate('/404')
+  }
+  
+  function handleBlur() {
+    if (!query && !hasFetchedData) {
+      navigate('/')
+    }
   }
 
   return (
@@ -101,6 +109,7 @@ function Search() {
           layoutId="search-bar"
           transition={{ duration: 0.5 }}
           autoFocus
+          onBlur={handleBlur}
           className="search-input"
           type="text"
           placeholder="Search..."
