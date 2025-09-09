@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Erica+One&display=swap');
+
+.logo {
+    font-family: 'Erica One', cursive;
+    color: white;
+}
+
 nav {
     background-color: rgba(43, 45, 67, 0.6);
     position: fixed;

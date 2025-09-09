@@ -91,7 +91,7 @@ function Search() {
   
   function handleBlur() {
     if (!query && !hasFetchedData) {
-      // navigate('/')
+      navigate('/')
     }
   }
 

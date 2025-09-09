@@ -10,6 +10,7 @@ import Search from './views/Search'
 import Navbar from './components/Navbar'
 import NotFound from './views/NotFound'
 import Footer from './components/Footer'
+import RouteChangeHandler from './components/RouterChangeHandler'
 
 function App() {
 
@@ -29,6 +30,9 @@ function App() {
   return (
     <>
       <Router>
+        <RouteChangeHandler onChange={() => {
+          window.scrollTo(0, 0)
+        }} />
         <Navbar />
         <LayoutGroup>
           <AnimatePresence mode="wait">
