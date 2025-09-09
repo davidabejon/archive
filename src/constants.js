@@ -8,6 +8,9 @@ export const formats = {
     TV_SHORT: 'TV Short',
     VIDEO_GAME: 'Video Game',
     BOOK: 'Book',
+    MANGA: 'Manga',
+    NOVEL: 'Novel',
+    ONE_SHOT: 'One Shot',
     OTHER: 'Other'
 }
 

@@ -256,3 +256,86 @@ query ($id: Int, $type: MediaType, $page: Int, $perPage: Int) {
 export const getTrending = `
 query{Trending:Page(perPage:6){media(isAdult:false,sort:TRENDING_DESC){...media}}NewAnime:Page(perPage:6){media(type:ANIME,isAdult:false,sort:ID_DESC){...media}}NewManga:Page(perPage:6){media(type:MANGA,isAdult:false,sort:ID_DESC){...media}}}fragment media on Media{id type status(version:2)format episodes chapters trending bannerImage title{userPreferred}coverImage{large}}
 `
+
+export const searchQuery = `
+query ($search: String, $page: Int, $perPage: Int) {
+  anime: Page(page: $page, perPage: $perPage) {
+    pageInfo {
+      total
+      currentPage
+      lastPage
+      hasNextPage
+    }
+    media(search: $search, type: ANIME) {
+      id
+      type
+      title {
+        romaji
+        english
+        native
+      }
+      coverImage {
+        large
+      }
+      startDate {
+        year
+      }
+      format
+    }
+  }
+  manga: Page(page: $page, perPage: $perPage) {
+    pageInfo {
+      total
+      currentPage
+      lastPage
+      hasNextPage
+    }
+    media(search: $search, type: MANGA) {
+      id
+      type
+      title {
+        romaji
+        english
+        native
+      }
+      coverImage {
+        large
+      }
+      startDate {
+        year
+      }
+      format
+    }
+  }
+  characters: Page(page: $page, perPage: $perPage) {
+    pageInfo {
+      total
+    }
+    characters(search: $search) {
+      id
+      name {
+        full
+        native
+      }
+      image {
+        large
+      }
+    }
+  }
+  staff: Page(page: $page, perPage: $perPage) {
+    pageInfo {
+      total
+    }
+    staff(search: $search) {
+      id
+      name {
+        full
+        native
+      }
+      image {
+        large
+      }
+    }
+  }
+}
+`
