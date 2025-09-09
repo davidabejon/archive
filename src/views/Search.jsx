@@ -91,12 +91,12 @@ function Search() {
   
   function handleBlur() {
     if (!query && !hasFetchedData) {
-      navigate('/')
+      // navigate('/')
     }
   }
 
   return (
-    <div className="pb-5">
+    <div className="pb-5" style={{ height: hasFetchedData && !loading ? '' : '90vh' }}>
       <motion.div className="search-banner" layoutId="search-banner" transition={{ duration: 0.5 }}>
         <motion.div
           className="absolute inset-0 bg-cover bg-center -z-10"

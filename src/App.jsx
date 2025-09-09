@@ -9,6 +9,7 @@ import { AnimatePresence, LayoutGroup } from 'motion/react'
 import Search from './views/Search'
 import Navbar from './components/Navbar'
 import NotFound from './views/NotFound'
+import Footer from './components/Footer'
 
 function App() {
 
@@ -41,6 +42,7 @@ function App() {
             </Routes>
           </AnimatePresence>
         </LayoutGroup>
+        <Footer />
       </Router>
     </>
   )
