@@ -11,6 +11,7 @@ import Navbar from './components/Navbar'
 import NotFound from './views/NotFound'
 import Footer from './components/Footer'
 import RouteChangeHandler from './components/RouterChangeHandler'
+import About from './views/About'
 
 function App() {
 
@@ -42,6 +43,7 @@ function App() {
               <Route path={'/:type/:id/:title?'} element={<Entry />} />
               <Route path={'/character/:id/:name?'} element={<Character />} />
               <Route path={'/staff/:id/:name?'} element={<Staff />} />
+              <Route path={'/about'} element={<About />} />
               <Route path={'*'} element={<NotFound />} />
             </Routes>
           </AnimatePresence>
