@@ -339,3 +339,67 @@ query ($search: String, $page: Int, $perPage: Int) {
   }
 }
 `
+
+export const getTrendingAnimeOnly = `
+query {
+  Trending: Page(perPage: 12) {
+    media(type: ANIME, isAdult: false, sort: TRENDING_DESC) {
+      ...media
+    }
+  }
+  NewAnime: Page(perPage: 12) {
+    media(type: ANIME, isAdult: false, sort: ID_DESC) {
+      ...media
+    }
+  }
+}
+
+fragment media on Media {
+  id
+  type
+  status(version: 2)
+  format
+  episodes
+  chapters
+  trending
+  bannerImage
+  title {
+    userPreferred
+  }
+  coverImage {
+    large
+  }
+}
+`
+
+export const getTrendingMangaOnly = `
+query {
+  Trending: Page(perPage: 25) {
+    media(type: MANGA, isAdult: false, sort: TRENDING_DESC) {
+      ...media
+    }
+  }
+  NewManga: Page(perPage: 25) {
+    media(type: MANGA, isAdult: false, sort: ID_DESC) {
+      ...media
+    }
+  }
+}
+
+fragment media on Media {
+  id
+  type
+  status(version: 2)
+  format
+  episodes
+  chapters
+  trending
+  bannerImage
+  title {
+    userPreferred
+  }
+  coverImage {
+    large
+  }
+}
+`
