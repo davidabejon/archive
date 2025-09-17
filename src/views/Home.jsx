@@ -4,11 +4,12 @@ import { useEffect, useState } from "react"
 import { motion } from "framer-motion"
 import { statusColors, statuses } from "../constants"
 import ImageSkeleton from "../components/ImageSkeleton"
-import { Skeleton } from "antd"
+import { Button, Skeleton } from "antd"
 import PageTransition from "../components/PageTransition"
 import "../styles/Home.css"
 import { FaAnglesDown } from "react-icons/fa6";
 import bgImage from '../assets/bright-pop-landscape.jpg'
+import { FaArrowRightLong } from "react-icons/fa6";
 
 function Home() {
 
@@ -150,6 +151,9 @@ function Home() {
               </motion.div>
             ))}
           </div>
+          <div className="w-full flex justify-end items-center">
+            <Button className="mt-2" onClick={() => navigate('/anime')} icon={<FaArrowRightLong />} iconPosition="end">See more Anime</Button>
+          </div>
           {trending?.length > 0 ? <h2 className="text-xl font-bold text-gray-500 mt-5">Newly Added Manga</h2>
             : <Skeleton active paragraph={{ rows: 0 }} className="mt-5 w-2" />}
           <div className="image-grid p-5 rounded-md bg-white">
@@ -179,6 +183,9 @@ function Home() {
                 </Link>
               </motion.div>
             ))}
+          </div>
+          <div className="w-full flex justify-end items-center">
+            <Button className="mt-2" onClick={() => navigate('/manga')} icon={<FaArrowRightLong />} iconPosition="end">See more Manga</Button>
           </div>
         </div>
       </div>

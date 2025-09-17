@@ -341,13 +341,35 @@ query ($search: String, $page: Int, $perPage: Int) {
 `
 
 export const getTrendingAnimeOnly = `
-query {
-  Trending: Page(perPage: 12) {
+query ($page: Int, $perPage: Int) {
+  Trending: Page(perPage: $perPage, page: $page) {
     media(type: ANIME, isAdult: false, sort: TRENDING_DESC) {
       ...media
     }
   }
-  NewAnime: Page(perPage: 12) {
+}
+
+fragment media on Media {
+  id
+  type
+  status(version: 2)
+  format
+  episodes
+  chapters
+  trending
+  bannerImage
+  title {
+    userPreferred
+  }
+  coverImage {
+    large
+  }
+}
+`
+
+export const getNewAnimeOnly = `
+query ($page: Int, $perPage: Int) {
+  NewAnime: Page(page: $page, perPage: $perPage) {
     media(type: ANIME, isAdult: false, sort: ID_DESC) {
       ...media
     }
