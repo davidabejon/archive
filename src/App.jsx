@@ -12,7 +12,8 @@ import NotFound from './views/NotFound'
 import Footer from './components/Footer'
 import RouteChangeHandler from './components/RouterChangeHandler'
 import About from './views/About'
-import Anime from './views/Anime'
+import TrendingAndNew from './views/TrendingAndNew'
+import { getNewAnimeOnly, getNewMangaOnly, getTrendingAnimeOnly, getTrendingMangaOnly } from './api/queries'
 
 function App() {
 
@@ -44,7 +45,8 @@ function App() {
               <Route path={'/:type/:id/:title?'} element={<Entry />} />
               <Route path={'/character/:id/:name?'} element={<Character />} />
               <Route path={'/staff/:id/:name?'} element={<Staff />} />
-              <Route path={'/anime'} element={<Anime />} />
+              <Route path={'/anime'} element={<TrendingAndNew key={'anime'} trendingQuery={getTrendingAnimeOnly} newQuery={getNewAnimeOnly} title="Anime" />} />
+              <Route path={'/manga'} element={<TrendingAndNew key={'manga'} trendingQuery={getTrendingMangaOnly} newQuery={getNewMangaOnly} title="Manga" />} />
               <Route path={'/about'} element={<About />} />
               <Route path={'*'} element={<NotFound />} />
             </Routes>

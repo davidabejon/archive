@@ -369,7 +369,7 @@ fragment media on Media {
 
 export const getNewAnimeOnly = `
 query ($page: Int, $perPage: Int) {
-  NewAnime: Page(page: $page, perPage: $perPage) {
+  New: Page(page: $page, perPage: $perPage) {
     media(type: ANIME, isAdult: false, sort: ID_DESC) {
       ...media
     }
@@ -395,13 +395,35 @@ fragment media on Media {
 `
 
 export const getTrendingMangaOnly = `
-query {
-  Trending: Page(perPage: 25) {
+query ($page: Int, $perPage: Int) {
+  Trending: Page(perPage: $perPage, page: $page) {
     media(type: MANGA, isAdult: false, sort: TRENDING_DESC) {
       ...media
     }
   }
-  NewManga: Page(perPage: 25) {
+}
+
+fragment media on Media {
+  id
+  type
+  status(version: 2)
+  format
+  episodes
+  chapters
+  trending
+  bannerImage
+  title {
+    userPreferred
+  }
+  coverImage {
+    large
+  }
+}
+`
+
+export const getNewMangaOnly = `
+query ($page: Int, $perPage: Int) {
+  New: Page(perPage: $perPage, page: $page) {
     media(type: MANGA, isAdult: false, sort: ID_DESC) {
       ...media
     }

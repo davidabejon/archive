@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react"
-import { getNewAnimeOnly, getTrendingAnimeOnly } from "../api/queries"
 import PageTransition from "../components/PageTransition"
 import { Button, Skeleton } from "antd"
 import ImageSkeleton from "../components/ImageSkeleton"
@@ -9,11 +8,11 @@ import { statusColors, statuses } from "../constants"
 import '../styles/Home.css'
 import { FaArrowDownLong } from "react-icons/fa6";
 
-function Anime() {
+function TrendingAndNew({ trendingQuery, newQuery, title }) {
 
   let navigate = useNavigate()
-  const [trendingAnime, setTrendingAnime] = useState([])
-  const [newAnime, setNewAnime] = useState([])
+  const [trendingEntries, setTrendingEntries] = useState([])
+  const [newEntries, setNewEntries] = useState([])
   const [loading, setLoading] = useState(false)
   const [pageTrending, setPageTrending] = useState(1)
   const [pageNew, setPageNew] = useState(1)
@@ -43,7 +42,7 @@ function Anime() {
         'Accept': 'application/json',
       },
       body: JSON.stringify({
-        query: getTrendingAnimeOnly,
+        query: trendingQuery,
         variables: variablesTrending
       })
     }
@@ -56,7 +55,7 @@ function Anime() {
         'Accept': 'application/json',
       },
       body: JSON.stringify({
-        query: getNewAnimeOnly,
+        query: newQuery,
         variables: variablesNew
       })
     }
@@ -84,13 +83,13 @@ function Anime() {
   function handleDataTrending(data) {
     setLoading(false)
     console.log(data)
-    setTrendingAnime((prev) => [...prev, ...data.data.Trending.media])
+    setTrendingEntries((prev) => [...prev, ...data.data.Trending.media])
   }
 
   function handleDataNew(data) {
     setLoading(false)
     console.log(data)
-    setNewAnime((prev) => [...prev, ...data.data.NewAnime.media])
+    setNewEntries((prev) => [...prev, ...data.data.New.media])
   }
 
   function handleError(error) {
@@ -103,10 +102,10 @@ function Anime() {
   return (
     <PageTransition x={0}>
       <div className={`padding-center ${isMobile ? 'mt-5' : 'mt-20'}`}>
-        {trendingAnime?.length > 0 ? <h2 className="text-xl font-bold text-gray-500 mt-5">Trending Anime</h2>
+        {trendingEntries?.length > 0 ? <h2 className="text-xl font-bold text-gray-500 mt-5">Trending {title}</h2>
           : <Skeleton active paragraph={{ rows: 0 }} className="mt-5 w-2" />}
         <div className="image-grid p-5 rounded-md bg-white">
-          {trendingAnime?.map((item) => (
+          {trendingEntries?.map((item) => (
             <motion.div
               initial={{ scale: 0.95, opacity: 0 }}
               whileInView={{ scale: 1, opacity: 1 }}
@@ -137,10 +136,10 @@ function Anime() {
           <Button className="mt-2" onClick={() => setPageTrending(pageTrending + 1)} disabled={loading} icon={<FaArrowDownLong />} iconPosition="end">Load More</Button>
         </div>
 
-        {newAnime?.length > 0 ? <h2 className="text-xl font-bold text-gray-500 mt-5">Newly Added Anime</h2>
+        {newEntries?.length > 0 ? <h2 className="text-xl font-bold text-gray-500 mt-5">Newly Added {title}</h2>
           : <Skeleton active paragraph={{ rows: 0 }} className="mt-5 w-2" />}
         <div className="image-grid p-5 rounded-md bg-white">
-          {newAnime?.map((item) => (
+          {newEntries?.map((item) => (
             <motion.div
               initial={{ scale: 0.95, opacity: 0 }}
               whileInView={{ scale: 1, opacity: 1 }}
@@ -176,4 +175,4 @@ function Anime() {
   )
 }
 
-export default Anime
+export default TrendingAndNew
