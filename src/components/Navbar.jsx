@@ -46,7 +46,6 @@ function Navbar() {
           <li>
           </li>
           <li className='nav-links nav-links-right gap-1.5 flex justify-center items-center'>
-            {location.pathname !== '/' && location.pathname !== '/search' && <Link to="/search" className='icon-link'><IoSearch size={20} color='rgb(197, 197, 197)' /></Link>}
             <Link to="/about" className='nav-link'>About</Link>
           </li>
         </ul>
