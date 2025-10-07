@@ -28,11 +28,11 @@ function EntryTabs({ relations, characters, staff, trailer }) {
           label: 'Staff',
           children: <Staff />,
         },
-        {
-          key: '4',
-          label: 'Stats',
-          children: 'Content of Tab Pane 3',
-        }
+        // {
+        //   key: '4',
+        //   label: 'Stats',
+        //   children: 'Content of Tab Pane 3',
+        // }
       ]} />
     </div>
   )
